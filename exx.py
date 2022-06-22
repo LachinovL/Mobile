@@ -22,6 +22,15 @@ def changeText1():
             exit()
 
     l[0] =5
+    j = 0
+    for i in l:
+        if i == 5:
+            j += 1
+    if j == 4:
+        messagebox.showinfo("You win", "You win")
+        j = 0
+        exit()
+
 
 
 def changeText2():
@@ -32,7 +41,15 @@ def changeText2():
             exit()
 
     l[1] = 5
+    j = 0
+    for i in l:
 
+        if i == 5:
+            j += 1
+    if j == 4:
+        messagebox.showinfo("You win", "You win")
+        j = 0
+        exit()
 
 def changeText3():
     btn3['text'] = f'{l[2]}'
@@ -40,8 +57,17 @@ def changeText3():
         if l[2]>i:
             messagebox.showinfo("You lose", "You lose")
             exit()
-    if l[2] == i:
-        l[2] = 5
+
+    l[2] = 5
+    j = 0
+    for i in l:
+
+        if i == 5:
+            j += 1
+    if j == 4:
+        messagebox.showinfo("You win", "You win")
+        j = 0
+        exit()
 
 def changeText4():
     btn4['text'] = f'{l[3]}'
@@ -50,7 +76,14 @@ def changeText4():
             messagebox.showinfo("You lose", "You lose")
             exit()
     l[3] = 5
+    j = 0
+    for i in l:
 
+        if i == 5:
+            j+=1
+    if j == 4:
+        messagebox.showinfo("You win", "You win")
+        j=0
 
 
 def click_button():
