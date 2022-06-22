@@ -1,0 +1,116 @@
+<MyClockWidget>:
+    on_pos: self.update_clock()
+    on_size: self.update_clock()
+    FloatLayout
+        id: face
+        size_hint: None, None
+        pos_hint: {"center_x":4, "center_y":3}
+        size: 4*min(root.size), 4*min(root.size)
+        canvas:
+            Color:
+                rgb: 0.1, 0.1, 0.1
+            Ellipse:
+                size: self.size
+                pos: self.pos
+    FloatLayout
+        id: hands
+        size_hint: None, None
+        pos_hint: {"center_x":4, "center_y":3}
+        size: 4*min(root.size), 4*min(root.size)
+
+BoxLayout:
+    orientation:'vertical'
+
+    MDBottomNavigation:
+
+        panel_color: 0.25, 0.25, 0.25, 1
+
+
+
+        MDBottomNavigationItem:
+            name: 'screen 1'
+
+            text: 'Часы'
+            icon: 'clock'
+
+
+            MDLabel:
+                md_bg_color: 0, 0, 0, 1
+                id: clock
+
+
+
+        MDBottomNavigationItem:
+            name: 'screen 2'
+            text: 'Будильник'
+            icon: 'alarm'
+            user_font_size:"32sp"
+
+            MDFloatLayout:
+                id: for_scroll
+                md_bg_color: 0, 0, 0, 1
+
+
+                MDRaisedButton:
+                    md_bg_color: 0, 0, 0, 1
+                    text_color: 1, 0.69, 0.07, 1
+                    font_size: 24
+                    text: '+'
+                    pos_hint:{'center_x': .95, 'center_y': .97}
+                    on_release: app.show_time_picker()
+
+                MDRaisedButton:
+                    md_bg_color: 0, 0, 0, 1
+                    text_color: 1, 0.69, 0.07, 1
+                    font_size: 24
+                    text: '-'
+                    pos_hint:{'center_y': .97}
+                    on_release: app.on_stop()
+
+                MDLabel:
+                    color: 1, 1, 1, 1
+                    font_size: 24
+                    text: 'Будильник'
+                    pos_hint:{'center_y': .96}
+                    halign: 'center'
+
+                MDLabel:
+                    id: time_label
+                    color: 1, 1, 1, 1
+                    bold: True
+                    font_size: 24
+                    halign: 'center'
+
+
+
+
+
+        MDBottomNavigationItem:
+            name: 'screen 3'
+            text: 'Секундомер'
+            icon: 'timer'
+
+
+            MDLabel:
+                md_bg_color: 0, 0, 0, 1
+                color: 1, 1, 1, 1
+                id: stopwatch
+                markup: True
+                halign: 'center'
+
+            MDRoundFlatButton:
+                text:'START'
+                text_color: 1, 1, 1, 1
+                id: start_stop
+                pos_hint: {'center_x': 0.25, 'center_y': 0.35}
+                on_release:
+                    app.start_stop()
+
+            MDRoundFlatButton:
+                line_color: 1, 1, 1, 1
+                text: 'RESET'
+                text_color: 1, 1, 1, 1
+                id: reset
+                pos_hint: {'center_x': 0.75, 'center_y': 0.35}
+                on_release:
+                    app.reset()
